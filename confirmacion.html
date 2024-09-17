@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Compra - Hotel Elite</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            margin-left: 10px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #333;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .btn-download {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1.2em;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-download:hover {
+            background-color: #0056b3;
+        }
+
+        .note {
+            font-size: 1.2em;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="imagenes/elite-logo.png" alt="" width="50">
+        </div>
+        <ul>
+            <li><a href="pagina.html">Inicio</a></li>
+            <li><a href="habitaciones.html">Habitaciones</a></li>
+            <li><a href="reserva.html">Reservas</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </div>
+
+    <!-- Contenedor principal -->
+    <div class="container">
+        <h1>Confirmación de Compra</h1>
+        <p>¡Gracias por tu reserva!</p>
+        <p>Has reservado la siguiente habitación:</p>
+        <p><strong>Suite Normal</strong></p>
+        <p>Precio por noche: $100</p>
+        <p>Servicios adicionales seleccionados:</p>
+        <ul>
+            <li>Desayuno incluido - $20</li>
+            <li>Acceso al spa - $50</li>
+            <li>Transporte al aeropuerto - $30</li>
+        </ul>
+        <p><strong>Precio Total: $200</strong></p>
+
+        <p class="note">Una confirmación de tu reserva ha sido enviada a tu correo electrónico.</p>
+        <a href="recibo.pdf" class="btn-download" download>Descargar Recibo</a>
+    </div>
+</body>
+</html>

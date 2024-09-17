@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Elite</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            margin-left: 10px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .photo {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #333;
+        }
+
+        .hotel-info {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .hotel-info h2 {
+            font-size: 2.5em;
+            color: #333;
+        }
+
+        .hotel-info p {
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .hotel-info ul {
+            list-style: none;
+            padding: 0;
+            font-size: 1.2em;
+            color: #555;
+        }
+
+        .rating {
+            margin-top: 10px;
+            font-size: 2.5em;
+            color: #f39c12;
+        }
+
+        .celebrity-mention {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #007bff;
+        }
+
+        .reservation-section {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .reservation-section h3 {
+            font-size: 2em;
+            color: #333;
+        }
+
+        .reservation-section .option-box {
+            display: inline-block;
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            margin: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .reservation-section select, .reservation-section input[type="date"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn-siguiente {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            margin-top: 30px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1.2em;
+        }
+
+        .btn-siguiente:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <!-- Espacio para tu logo -->
+            <img src="imagenes/elite-logo.png" alt="" width="50">
+        </div>
+        <ul>
+            <li><a href="pagina.html">Inicio</a></li>
+            <li><a href="habitaciones.html">Habitaciones</a></li>
+            <li><a href="reserva.html">Reservas</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </div>
+
+    <!-- Foto panorámica del hotel -->
+    <div class="container">
+        <img src="imagenes/panoramica.avif" alt="Foto panorámica del hotel" class="photo">
+    </div>
+
+    <!-- Información del hotel -->
+    <div class="hotel-info">
+        <h2>Bienvenido al Hotel Elite</h2>
+        <p>En el Hotel Elite, ofrecemos una experiencia única con un enfoque en la comodidad y el lujo. Nuestro hotel es un 5 estrellas y cuenta con una amplia gama de servicios diseñados para hacer su estancia inolvidable:</p>
+        <ul>
+            <li>Habitaciones confortables y elegantes</li>
+            <li>Restaurante gourmet</li>
+            <li>Centro de bienestar y spa</li>
+            <li>Piscina y gimnasio</li>
+            <li>Wi-Fi gratuito en todo el hotel</li>
+            <li>Servicio de habitaciones 24/7</li>
+        </ul>
+        <div class="rating">
+            ★★★★☆
+        </div>
+        
+    </div>
+
+    <!-- Sección de reserva -->
+    <div class="reservation-section">
+        <h3>¿Quieres reservar? Llena los siguientes datos:</h3>
+        <div class="option-box">
+            <label for="hotel">¿A qué hotel quieres ir?</label>
+            <select id="hotel">
+                <option value="Santiago">Santiago</option>
+                <option value="Estados Unidos">Estados Unidos</option>
+                <option value="Colombia">Colombia</option>
+                <option value="Brasil">Brasil</option>
+                <option value="México">México</option>
+            </select>
+        </div>
+
+        <div class="option-box">
+            <label for="fecha">¿En qué fecha te gustaría ir?</label>
+            <input type="date" id="fecha" name="fecha">
+        </div>
+
+        <div class="option-box">
+            <label for="adultos">¿Cuántos adultos?</label>
+            <select id="adultos">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+            <label for="ninos" style="margin-top: 10px;">¿Cuántos niños?</label>
+            <select id="ninos">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+
+        <button class="btn-siguiente">Siguiente</button>
+    </div>
+</body>
+</html>

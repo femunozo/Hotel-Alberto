@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva - Hotel Elite</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            margin-left: 10px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #333;
+            text-align: center;
+        }
+
+        .room-options, .extra-services {
+            margin-top: 30px;
+        }
+
+        .room-options h2, .extra-services h2 {
+            font-size: 2em;
+            color: #333;
+        }
+
+        .room-options .room, .extra-services .service {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .room-options .room:last-child, .extra-services .service:last-child {
+            border-bottom: none;
+        }
+
+        .room-options img, .extra-services input[type="checkbox"] {
+            width: 100px;
+            height: 75px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .extra-services input[type="checkbox"] {
+            margin-right: 15px;
+        }
+
+        .total-price {
+            margin-top: 30px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+
+        .btn-compra {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1.2em;
+            display: block;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-compra:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="imagenes/elite-logo.png" alt="" width="50">
+        </div>
+        <ul>
+            <li><a href="pagina.html">Inicio</a></li>
+            <li><a href="habitaciones.html">Habitaciones</a></li>
+            <li><a href="reservas.html">Reservas</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h1>Reserva tu Habitación</h1>
+
+        <div class="room-options">
+            <h2>Elige tu habitación</h2>
+            <div class="room">
+                <img src="suite-normal.jpg" alt="Suite Normal">
+                <div>
+                    <h3>Suite Normal</h3>
+                    <p>Precio: $100 por noche</p>
+                </div>
+                <input type="radio" name="room" value="normal">
+            </div>
+            <div class="room">
+                <img src="suite-premium.jpg" alt="Suite Premium">
+                <div>
+                    <h3>Suite Premium</h3>
+                    <p>Precio: $200 por noche</p>
+                </div>
+                <input type="radio" name="room" value="premium">
+            </div>
+            <div class="room">
+                <img src="suite-vip.jpg" alt="Suite VIP">
+                <div>
+                    <h3>Suite VIP</h3>
+                    <p>Precio: $350 por noche</p>
+                </div>
+                <input type="radio" name="room" value="vip">
+            </div>
+        </div>
+
+        <div class="extra-services">
+            <h2>Servicios Adicionales</h2>
+            <div class="service">
+                <input type="checkbox" id="breakfast" value="20">
+                <label for="breakfast">Desayuno incluido - $20</label>
+            </div>
+            <div class="service">
+                <input type="checkbox" id="spa" value="50">
+                <label for="spa">Acceso al spa - $50</label>
+            </div>
+            <div class="service">
+                <input type="checkbox" id="airport-transfer" value="30">
+                <label for="airport-transfer">Transporte al aeropuerto - $30</label>
+            </div>
+        </div>
+
+        <div class="total-price">
+            <p>Total estimado: <span id="total-price">$0</span></p>
+        </div>
+
+        <a href="confirmacion.html" class="btn-compra">Ir a Comprar</a>
+    </div>
+
+    <script>
+        const roomRadios = document.querySelectorAll('input[name="room"]');
+        const serviceCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+        const totalPriceElem = document.getElementById('total-price');
+
+        function updateTotalPrice() {
+            let total = 0;
+
+            roomRadios.forEach(radio => {
+                if (radio.checked) {
+                    switch (radio.value) {
+                        case 'normal':
+                            total += 100;
+                            break;
+                        case 'premium':
+                            total += 200;
+                            break;
+                        case 'vip':
+                            total += 350;
+                            break;
+                    }
+                }
+            });
+
+            serviceCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    total += parseFloat(checkbox.value);
+                }
+            });
+
+            totalPriceElem.textContent = `$${total}`;
+        }
+
+        roomRadios.forEach(radio => radio.addEventListener('change', updateTotalPrice));
+        serviceCheckboxes.forEach(checkbox => checkbox.addEventListener('change', updateTotalPrice));
+    </script>
+</body>
+</html>

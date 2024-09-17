@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suite VIP - Hotel Elite</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            margin-left: 10px;
+        }
+
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            margin: 0 15px;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #333;
+            text-align: center;
+        }
+
+        .photos {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .photos img {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .description {
+            margin-top: 30px;
+            line-height: 1.6;
+            color: #555;
+            text-align: justify;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #333;
+        }
+
+        .btn-reserva {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            margin-top: 30px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1.2em;
+            display: block;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .btn-reserva:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <img src="imagenes/elite-logo.png" alt="" width="50">
+        </div>
+        <ul>
+            <li><a href="pagina.html">Inicio</a></li>
+            <li><a href="habitaciones.html">Habitaciones</a></li>
+            <li><a href="reserva.html">Reservas</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <h1>Suite VIP</h1>
+
+        <div class="photos">
+            <img src="imagenes/vip1.jpg" alt="Foto 1 de la Suite VIP">
+            <img src="imagenes/vip2.jpg" alt="Foto 2 de la Suite VIP">
+            <img src="imagenes/vip3.jpg" alt="Foto 3 de la Suite VIP">
+        </div>
+
+        <div class="description">
+            <h2>Descripción de la Suite VIP</h2>
+            <p>La Suite VIP de Hotel Elite es el epítome del lujo y la comodidad. Diseñada para los huéspedes más exigentes, esta suite ofrece el máximo confort y exclusividad. Ubicada en los pisos superiores del hotel, la Suite VIP cuenta con vistas impresionantes, un diseño elegante, y cada detalle está pensado para brindar una experiencia única e inolvidable.</p>
+            <p>Esta suite incluye una cama king-size con sábanas de alta calidad, un amplio salón con sofás de cuero, una cocina privada equipada, y un comedor independiente. Además, la Suite VIP ofrece un baño de mármol con bañera de hidromasaje y ducha de lluvia, ideal para relajarse tras un día ocupado. Los huéspedes también disfrutarán de un balcón privado con vistas panorámicas.</p>
+            
+            <h2>Servicios Exclusivos</h2>
+            <ul>
+                <li>Wi-Fi de alta velocidad gratuito</li>
+                <li>Aire acondicionado controlado individualmente</li>
+                <li>Televisión inteligente de 60 pulgadas con acceso a streaming</li>
+                <li>Servicio de mayordomo las 24 horas</li>
+                <li>Baño privado con hidromasaje y ducha de lluvia</li>
+                <li>Balcón privado con vistas a la ciudad</li>
+                <li>Cocina totalmente equipada</li>
+                <li>Minibar premium incluido</li>
+                <li>Acceso al spa y gimnasio del hotel</li>
+                <li>Servicio de transporte privado (bajo petición)</li>
+            </ul>
+
+            <p>La Suite VIP es ideal para quienes buscan la mejor experiencia de lujo en Hotel Elite. Ya sea para una ocasión especial o para disfrutar de unas vacaciones inolvidables, esta suite ofrece todo lo que necesitas para una estancia de cinco estrellas.</p>
+        </div>
+
+        <a href="reserva.html" class="btn-reserva">Reservar Ahora</a>
+    </div>
+</body>
+</html>

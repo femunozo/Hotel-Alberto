@@ -88,6 +88,13 @@
             margin-right: 15px;
         }
 
+        .room-options input[type="radio"] {
+            width: 30px; 
+            height: 30px; 
+            margin-right: 10px; 
+            cursor: pointer;
+        }
+
         .total-price {
             margin-top: 30px;
             font-size: 1.5em;
@@ -124,7 +131,7 @@
         <ul>
             <li><a href="pagina.html">Inicio</a></li>
             <li><a href="habitaciones.html">Habitaciones</a></li>
-            <li><a href="reservas.html">Reservas</a></li>
+            <li><a href="reserva.html">Reservas</a></li>
             <li><a href="contacto.html">Contacto</a></li>
         </ul>
     </div>
@@ -135,43 +142,43 @@
         <div class="room-options">
             <h2>Elige tu habitación</h2>
             <div class="room">
-                <img src="suite-normal.jpg" alt="Suite Normal">
+                <img src="imagenes/normal2.jpg" alt="Suite Normal">
                 <div>
                     <h3>Suite Normal</h3>
                     <p>Precio: $100 por noche</p>
                 </div>
-                <input type="radio" name="room" value="normal">
+                <input type="radio" name="room" value="normal" data-price="100">
             </div>
             <div class="room">
-                <img src="suite-premium.jpg" alt="Suite Premium">
+                <img src="imagenes/premium3.jpg" alt="Suite Premium">
                 <div>
                     <h3>Suite Premium</h3>
                     <p>Precio: $200 por noche</p>
                 </div>
-                <input type="radio" name="room" value="premium">
+                <input type="radio" name="room" value="premium" data-price="200">
             </div>
             <div class="room">
-                <img src="suite-vip.jpg" alt="Suite VIP">
+                <img src="imagenes/vip1.jpg" alt="Suite VIP">
                 <div>
                     <h3>Suite VIP</h3>
                     <p>Precio: $350 por noche</p>
                 </div>
-                <input type="radio" name="room" value="vip">
+                <input type="radio" name="room" value="vip" data-price="350">
             </div>
         </div>
 
         <div class="extra-services">
             <h2>Servicios Adicionales</h2>
             <div class="service">
-                <input type="checkbox" id="breakfast" value="20">
+                <input type="checkbox" id="breakfast" value="20" data-service="Desayuno incluido">
                 <label for="breakfast">Desayuno incluido - $20</label>
             </div>
             <div class="service">
-                <input type="checkbox" id="spa" value="50">
+                <input type="checkbox" id="spa" value="50" data-service="Acceso al spa">
                 <label for="spa">Acceso al spa - $50</label>
             </div>
             <div class="service">
-                <input type="checkbox" id="airport-transfer" value="30">
+                <input type="checkbox" id="airport-transfer" value="30" data-service="Transporte al aeropuerto">
                 <label for="airport-transfer">Transporte al aeropuerto - $30</label>
             </div>
         </div>
@@ -180,30 +187,21 @@
             <p>Total estimado: <span id="total-price">$0</span></p>
         </div>
 
-        <a href="confirmacion.html" class="btn-compra">Ir a Comprar</a>
+        <a href="#" class="btn-compra" id="btn-compra">Ir a Comprar</a>
     </div>
 
     <script>
         const roomRadios = document.querySelectorAll('input[name="room"]');
         const serviceCheckboxes = document.querySelectorAll('input[type="checkbox"]');
         const totalPriceElem = document.getElementById('total-price');
+        const btnCompra = document.getElementById('btn-compra');
 
         function updateTotalPrice() {
             let total = 0;
 
             roomRadios.forEach(radio => {
                 if (radio.checked) {
-                    switch (radio.value) {
-                        case 'normal':
-                            total += 100;
-                            break;
-                        case 'premium':
-                            total += 200;
-                            break;
-                        case 'vip':
-                            total += 350;
-                            break;
-                    }
+                    total += parseFloat(radio.getAttribute('data-price'));
                 }
             });
 
@@ -218,6 +216,35 @@
 
         roomRadios.forEach(radio => radio.addEventListener('change', updateTotalPrice));
         serviceCheckboxes.forEach(checkbox => checkbox.addEventListener('change', updateTotalPrice));
+
+        // localstorage
+        btnCompra.addEventListener('click', function (event) {
+            const selectedRoom = document.querySelector('input[name="room"]:checked');
+            if (!selectedRoom) {
+                alert('Por favor, elige una habitación antes de continuar.');
+                event.preventDefault(); // alerta
+                return;
+            }
+
+            const selectedServices = [];
+
+            serviceCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    selectedServices.push({
+                        name: checkbox.getAttribute('data-service'),
+                        price: checkbox.value
+                    });
+                }
+            });
+
+            localStorage.setItem('selectedRoom', JSON.stringify({
+                name: selectedRoom ? selectedRoom.value : null,
+                price: selectedRoom ? selectedRoom.getAttribute('data-price') : 0
+            }));
+
+            localStorage.setItem('selectedServices', JSON.stringify(selectedServices));
+            window.location.href = "confirmacion.html"; 
+        });
     </script>
 </body>
 </html>

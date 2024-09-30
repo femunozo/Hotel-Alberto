@@ -42,26 +42,26 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 50px auto;
             padding: 20px;
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
         }
 
         h1 {
             font-size: 2.5em;
             color: #333;
+            text-align: center;
         }
 
-        p {
-            font-size: 1.2em;
-            color: #555;
+        .summary {
+            margin-top: 30px;
+            font-size: 1.5em;
         }
 
-        .btn-download {
+        .btn-confirm {
             background-color: #007bff;
             color: white;
             border: none;
@@ -71,18 +71,13 @@
             border-radius: 5px;
             font-size: 1.2em;
             display: block;
+            width: 100%;
             text-align: center;
             text-decoration: none;
         }
 
-        .btn-download:hover {
+        .btn-confirm:hover {
             background-color: #0056b3;
-        }
-
-        .note {
-            font-size: 1.2em;
-            color: #333;
-            margin-top: 20px;
         }
     </style>
 </head>
@@ -99,23 +94,49 @@
         </ul>
     </div>
 
-    <!-- Contenedor principal -->
     <div class="container">
         <h1>Confirmación de Compra</h1>
-        <p>¡Gracias por tu reserva!</p>
-        <p>Has reservado la siguiente habitación:</p>
-        <p><strong>Suite Normal</strong></p>
-        <p>Precio por noche: $100</p>
-        <p>Servicios adicionales seleccionados:</p>
-        <ul>
-            <li>Desayuno incluido - $20</li>
-            <li>Acceso al spa - $50</li>
-            <li>Transporte al aeropuerto - $30</li>
-        </ul>
-        <p><strong>Precio Total: $200</strong></p>
 
-        <p class="note">Una confirmación de tu reserva ha sido enviada a tu correo electrónico.</p>
-        <a href="recibo.pdf" class="btn-download" download>Descargar Recibo</a>
+        <div class="summary">
+            <h2>Resumen de tu reserva:</h2>
+            <p><strong>Habitación seleccionada:</strong> <span id="room-selected"></span></p>
+            <p><strong>Servicios adicionales:</strong></p>
+            <ul id="services-list"></ul>
+            <p><strong>Precio total:</strong> $<span id="total-price"></span></p>
+        </div>
+
+        <a href="#" class="btn-confirm">Confirmar y pagar</a>
     </div>
+
+    <script>
+        const roomSelectedElem = document.getElementById('room-selected');
+        const servicesListElem = document.getElementById('services-list');
+        const totalPriceElem = document.getElementById('total-price');
+
+        const selectedRoom = JSON.parse(localStorage.getItem('selectedRoom'));
+        const selectedServices = JSON.parse(localStorage.getItem('selectedServices'));
+
+        let totalPrice = 0;
+
+        if (selectedRoom && selectedRoom.name) {
+            roomSelectedElem.textContent = selectedRoom.name.charAt(0).toUpperCase() + selectedRoom.name.slice(1) + ' - $' + selectedRoom.price;
+            totalPrice += parseFloat(selectedRoom.price);
+        }
+
+        if (selectedServices && selectedServices.length > 0) {
+            selectedServices.forEach(service => {
+                const li = document.createElement('li');
+                li.textContent = `${service.name} - $${service.price}`;
+                servicesListElem.appendChild(li);
+                totalPrice += parseFloat(service.price);
+            });
+        } else {
+            const li = document.createElement('li');
+            li.textContent = 'Ningún servicio adicional seleccionado';
+            servicesListElem.appendChild(li);
+        }
+
+        totalPriceElem.textContent = totalPrice;
+    </script>
 </body>
 </html>
